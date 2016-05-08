@@ -2,30 +2,33 @@
 
 1. connect to the internet
 
-2. ```bash
+2. upgrade
+
+ ```bash
 # pacman -Syu
 ```
 
-3. ```bash
+3. install basic stuff
+
+ ```bash
 # pacman -S htop sudo tmux vim
 ```
 
-4. ```bash
-# vim /etc/locale.gen
-```
+4. fix locale
 
-5. ```bash
+ ```bash
+# vim /etc/locale.gen
 # locale-gen
 ```
+5. set zone
 
-6.
 ```bash
 # sudo ln -s /usr/share/zoneinfo/Europe/Prague /etc/localtime
 ```
 
-7. make some scripts for wifi connection
+6. make some scripts for wifi connection
 
-8. check sshd config
+7. check sshd config
 
 # Camera
 
@@ -39,9 +42,3 @@ and PERHAPS the blacklist
 # ln -s /opt/vc/bin/raspi /usr/bin/raspistill
 # ln -s /opt/vc/bin/raspivid /usr/bin/raspivid
 ```
-
-# OCR
-
-https://pypi.python.org/pypi/pytesseract
-https://aur.archlinux.org/packages/tesseract-git/
-https://aur.archlinux.org/packages/tesseract-data-eng-git/
