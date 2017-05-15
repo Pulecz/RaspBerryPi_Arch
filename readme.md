@@ -2,11 +2,13 @@
 
 1. after flashing the SD card via this procedure https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-3
 
-  * connect HDMI cable to some monitor, usb keyboard and power, boot, login as root, root and enable sshd
+  * connect HDMI cable to some monitor, usb keyboard and power, boot, login as root(pass root), root and enable and start sshd
   ```bash
   # systemctl enable sshd
+  # systemctl start sshd
   ```
-  * if you connected ethernet cable or to connected to wifi now (google arch wiki wifi for that), note which LAN IP you got and continue to step 4.
+  * if you connected ethernet cable note which LAN IP you got(ip addr) and continue to step 4.
+    if you want to connect via WiFi see how to set it up using [Systemd-networkd wiki](https://wiki.archlinux.org/index.php/Systemd-networkd#Wireless_adapter)
 
 2. if you didn't connect to internet yet, turn off the pi gracefully (# shutdown now) and connect somewhere just with power and ethernet cable
 
@@ -28,7 +30,7 @@
   3.  install basic stuff
 
   ```bash
-  # pacman -S htop sudo tmux vim
+  # pacman -S htop sudo tmux vim mc
   ```
 
   4.  change root's password via
@@ -71,15 +73,25 @@
   # vim /etc/locale.gen
   # locale-gen
   ```
+7. setup default lang, by adding for example LANG=en_US.UTF-8, put the value same as in those in /etc/locale.gen
 
-7. if you don't like default UTC timezone, set your time zone e.g. CET,
+  ```bash
+  # vim /etc/locale.conf
+  ```
+
+
+8. if you don't like default UTC timezone, set your time zone e.g. CET,
 
   ```bash
   # rm /etc/localtime
   # ln -s /usr/share/zoneinfo/CET /etc/localtime
   ```
 
-8. edit sshd config if needed
+9. edit sshd config if needed
+
+10. edit /etc/systemd/network/eth0.network if you want for example static IP, look on [Systemd-networkd](https://wiki.archlinux.org/index.php/Systemd-networkd) wiki for more details
+
+11. Linux kernel was probably updated in the meantime, reboot and continue to use your alarmpi (or rename it in /etc/hostname)
 
 # Camera
 
